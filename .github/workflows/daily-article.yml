@@ -1,0 +1,39 @@
+name: Publication quotidienne d'un article
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Générer l'article du jour
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AMAZON_TAG: ${{ secrets.AMAZON_TAG }}
+          SITE_DOMAIN: ${{ vars.SITE_DOMAIN }}
+        run: npm run generate
+
+      - name: Publier le nouvel article
+        run: |
+          git config user.name "airguide-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs data
+          git commit -m "Article automatique du $(date +'%Y-%m-%d')" || echo "Rien à commettre"
+          git push
