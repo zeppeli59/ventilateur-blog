@@ -14,17 +14,17 @@ function head(title, description, canonical) {
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="alternate" type="application/rss+xml" title="${siteConfig.nom}" href="/rss.xml">`;
+  <link rel="stylesheet" href="${siteConfig.domaine}/styles/main.css">
+  <link rel="alternate" type="application/rss+xml" title="${siteConfig.nom}" href="${siteConfig.domaine}/rss.xml">`;
 }
 
 function header() {
   return `<header class="site-header">
-    <a class="logo" href="/">${siteConfig.nom}<span class="logo__dot">.</span></a>
+    <a class="logo" href="${siteConfig.domaine}/">${siteConfig.nom}<span class="logo__dot">.</span></a>
     <nav class="site-nav">
-      <a href="/#comparatifs">Comparatifs</a>
-      <a href="/#guides">Guides</a>
-      <a href="/#articles">Articles</a>
+      <a href="${siteConfig.domaine}/#comparatifs">Comparatifs</a>
+      <a href="${siteConfig.domaine}/#guides">Guides</a>
+      <a href="${siteConfig.domaine}/#articles">Articles</a>
     </nav>
   </header>`;
 }
@@ -67,7 +67,7 @@ export function pageArticle(article) {
 <body>
   ${header()}
   <main class="article">
-    <p class="breadcrumb"><a href="/">Accueil</a> / <span>${typeLabel[article.type] || "Article"}</span></p>
+    <p class="breadcrumb"><a href="${siteConfig.domaine}/">Accueil</a> / <span>${typeLabel[article.type] || "Article"}</span></p>
     <span class="badge badge--${article.type}">${typeLabel[article.type] || "Article"}</span>
     <p class="article__date">Publié le ${article.dateAffichage}</p>
     ${article.contenuHTML}
@@ -79,7 +79,7 @@ export function pageArticle(article) {
 
 export function pageAccueil(articles) {
   const parType = (t) => articles.filter((a) => a.type === t).slice(0, 12);
-  const carte = (a) => `<a class="carte" href="/articles/${a.slug}.html">
+  const carte = (a) => `<a class="carte" href="${siteConfig.domaine}/articles/${a.slug}.html">
       <span class="carte__badge badge--${a.type}">${typeLabel[a.type]}</span>
       <h3>${a.titreSEO.replace(/\s*\|.*$/, "")}</h3>
       <p>${a.excerpt}</p>
