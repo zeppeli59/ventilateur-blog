@@ -1,0 +1,13 @@
+{
+  "name": "ventilateur-blog",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Blog d'affiliation automatisé sur les ventilateurs — génération quotidienne d'articles SEO via l'API Claude",
+  "scripts": {
+    "generate": "node scripts/generate-article.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0"
+  }
+}

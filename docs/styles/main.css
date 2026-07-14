@@ -1,0 +1,176 @@
+/* ===== Tokens ===== */
+:root {
+  --bg: #F7F9FA;
+  --ink: #10222B;
+  --ink-soft: #3E5560;
+  --teal: #2E7D8C;
+  --amber: #E8B84B;
+  --line: #C9D6D9;
+  --card-bg: #FFFFFF;
+  --radius: 10px;
+  --font-display: "Space Grotesk", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+a { color: var(--teal); }
+
+/* ===== Header ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(247, 249, 250, 0.9);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.logo__dot { color: var(--amber); }
+.site-nav a {
+  margin-left: 24px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.site-nav a:hover { color: var(--teal); }
+
+/* ===== Hero (signature : lignes de flux d'air) ===== */
+.hero {
+  max-width: 760px;
+  margin: 64px auto 32px;
+  padding: 0 24px;
+  position: relative;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 24px;
+  width: 120px;
+  height: 40px;
+  background:
+    repeating-linear-gradient(
+      to right,
+      transparent 0 6px,
+      var(--teal) 6px 8px
+    );
+  opacity: 0.35;
+  mask-image: linear-gradient(90deg, black, transparent);
+}
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--teal);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  margin: 8px 0 12px;
+}
+.hero__sub { color: var(--ink-soft); font-size: 1.1rem; max-width: 55ch; }
+
+/* ===== Sections & grille ===== */
+.section { max-width: 1080px; margin: 0 auto; padding: 32px 24px; }
+.section h2 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 16px; }
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+
+.carte {
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.carte:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16, 34, 43, 0.08); }
+.carte h3 { font-size: 1.05rem; margin: 10px 0 8px; }
+.carte p { color: var(--ink-soft); font-size: 0.9rem; margin: 0 0 12px; }
+.carte__date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); }
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.badge--comparatif { background: #E5F1F3; color: var(--teal); }
+.badge--guide { background: #FBF1DC; color: #8A6416; }
+.badge--article { background: #EAEFF0; color: var(--ink-soft); }
+
+/* ===== Article ===== */
+.article { max-width: 720px; margin: 0 auto; padding: 32px 24px 64px; }
+.breadcrumb { font-size: 0.85rem; color: var(--ink-soft); }
+.article__date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 24px; }
+.article h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.3rem); line-height: 1.2; }
+.article h2 { font-family: var(--font-display); font-size: 1.4rem; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 24px; }
+.article h3 { font-size: 1.1rem; margin-top: 24px; }
+.article table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+.article th, .article td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; }
+.article th { background: #EFF4F5; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; }
+.article ul, .article ol { padding-left: 1.3em; }
+
+/* Encart produit affilié */
+.cta-produit {
+  background: #FFF9EE;
+  border: 1px solid var(--amber);
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 28px 0;
+}
+.cta-produit__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #8A6416;
+  margin: 0 0 8px;
+}
+.cta-produit__bouton {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--amber);
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 24px 48px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+.disclosure { max-width: 60ch; margin: 8px auto; font-size: 0.78rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
