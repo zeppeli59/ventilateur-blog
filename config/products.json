@@ -1,0 +1,24 @@
+{
+  "ventilateur sur pied ou colonne": [
+    {
+      "nom": "Rowenta Eole Silence Force VU7050F0 (colonne, 20 dB en mode silencieux)",
+      "asin": "B0G93LTWP8",
+      "image": "https://m.media-amazon.com/images/I/61KB1yVJcrL._AC_SL1500_.jpg"
+    }
+  ],
+  "ventilateur silencieux nuit": [
+    { "nom": "Levoit Windi Mini (20 dB ultra silencieux, moteur DC)", "asin": "", "image": "" }
+  ],
+  "types de ventilateurs": [
+    { "nom": "Cecotec EnergySilence 9090 Skyline Smart", "asin": "", "image": "" }
+  ],
+  "ventilateur usb bureau": [
+    { "nom": "Dreo Nomad One (tour, 20 dB)", "asin": "", "image": "" }
+  ],
+  "rapport qualité prix ventilateur": [
+    { "nom": "Duux Elevate (colonne premium)", "asin": "", "image": "" }
+  ],
+  "puissance ventilateur surface": [
+    { "nom": "Honeywell QuietSet HYF260E4 (colonne, oscillation 80°)", "asin": "", "image": "" }
+  ]
+}
